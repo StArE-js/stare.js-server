@@ -1,6 +1,6 @@
 {
-  "name": "stare.js-server",
-  "version": "1.0.0-rc",
+  "name": "@stare.js/stare.js-server",
+  "version": "1.0.2-rc",
   "description": "Node.js serp visualization server",
   "keywords": [
     "server",
@@ -22,10 +22,7 @@
     "url": "git+https://github.com/StArE-js/stare.js-server.git"
   },
   "contributors": [
-    {
-      "name": "Diego Salazar S.",
-      "email": "diego.salazar.se@usach.cl"
-    }
+    "Diego Salazar S. <diego.salazar.se@usach.cl>"
   ],
   "license": "MIT",
   "bugs": {
@@ -52,5 +49,12 @@
     "googleapis": "^59.0.0",
     "jest": "^26.4.2",
     "ms-rest-azure": "^3.0.0"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "d-salazar-se"
 }
