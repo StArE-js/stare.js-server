@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "figlet": "^1.5.0",
     "googleapis": "^48.0.0",
-    "ms-rest-azure": "^3.0.0",
+    "ms-rest-azure": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
