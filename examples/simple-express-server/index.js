@@ -19,7 +19,7 @@ const mySERPs = {
 };
 
 const stare = require('../..')({
-  engines: ['elasticsearch'],
+  engines: ['elasticsearch', 'solr'],
   // engines: ['bing', 'ecosia', 'google', 'searchcloud', 'personalSERP'],
   // personalMetrics: myMetrics,
   // personalSERPs: mySERPs,
@@ -34,6 +34,14 @@ const stare = require('../..')({
     baseUrl: 'http://143.110.239.29',
     _index: 'movies',
     _source: '_source',
+    titleProperty: 'fields.title',
+    bodyProperty: 'fields.plot',
+    snippetProperty: 'fields.plot',
+    imageProperty: 'fields.image_url'
+  },
+  solr: {
+    baseUrl: 'http://localhost:8983',
+    core: 'movies',
     titleProperty: 'fields.title',
     bodyProperty: 'fields.plot',
     snippetProperty: 'fields.plot',
