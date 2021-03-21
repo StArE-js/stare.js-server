@@ -1,10 +1,10 @@
 # StArE.js (Node.js Server version)
 
-![npm](https://img.shields.io/npm/v/stare.js)
-![npm](https://img.shields.io/npm/dm/stare.js)
+![npm](https://img.shields.io/npm/v/@stare.js/stare.js-server)
+![npm](https://img.shields.io/npm/dm/@stare.js/stare.js-server)
 [![Build Status](https://travis-ci.com/StArE-js/stare.js-server.svg?branch=master)](https://travis-ci.com/StArE-js/stare.js-server)
 [![Coverage Status](https://coveralls.io/repos/github/StArE-js/stare.js-server/badge.svg?branch=master)](https://coveralls.io/github/StArE-js/stare.js-server?branch=master)
-![NPM](https://img.shields.io/npm/l/stare.js)
+![NPM](https://img.shields.io/npm/l/@stare.js/stare.js-server)
 
 ## Description
 StArE.js is an open source project intended to facilitate developers the creation of alternative visualizations of search engine results page (SERP). StArE.js provides a modular and extensible processing pipeline capable of (1) transforming SERP, (2) extracting features from individual search results, and (3) visualizing SERP in multiple ways.
@@ -12,12 +12,12 @@ StArE.js is an open source project intended to facilitate developers the creatio
 ## Installation
 
 ```bash
-npm install stare.js
+npm i @stare.js/stare.js-server
 ```
 ## How to use
 
 ```js
-const stare = require('stare.js')({...options});
+const stare = require('@stare.js/stare.js-server')({...options});
 
 stare('google', 'What is love?', 10, ['ranking', 'language'])
   .then(result => {
@@ -41,7 +41,7 @@ You can find the most basic full example in the [examples folder](/examples/).
 
 ## Resources
 
-* [npm package](https://www.npmjs.com/package/stare.js)
+* [npm package](https://www.npmjs.com/package/@stare.js/stare.js-server)
 * [Documentation](/docs/)
 * [Examples](/examples/)
 
