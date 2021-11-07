@@ -114,3 +114,14 @@ describe('SERP AWS Search cloud', () => {
   });
 
 });
+
+describe('SERP baremo', () => {
+  test(`Failed to get 'baremo' results for query=null and numberOfResults=1`, () => {
+    return expect(baremo(null, 1)).rejects.toThrow();
+  });
+
+  test(`No stareOptions.baremo set`, () => {
+    global.stareOptions.baremo = null;
+    return expect(require('../lib/serp/baremo')).rejects.toThrow();
+  });
+});

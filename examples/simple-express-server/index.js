@@ -19,7 +19,8 @@ const mySERPs = {
 };
 
 const stare = require('../..')({
-  engines: ['elasticsearch', 'solr'],
+  engines: ['baremo'],
+  // engines: ['elasticsearch', 'solr'],
   // engines: ['bing', 'ecosia', 'google', 'searchcloud', 'personalSERP'],
   // personalMetrics: myMetrics,
   // personalSERPs: mySERPs,
@@ -30,31 +31,41 @@ const stare = require('../..')({
   // bing: {
   //   serviceKey: process.env.BING_SERVICE_KEY
   // },
-  elasticsearch: {
-    baseUrl: 'http://143.110.239.29',
-    _index: 'movies',
+  // elasticsearch: {
+  //   baseUrl: 'http://143.110.239.29',
+  //   _index: 'movies',
+  //   _source: '_source',
+  //   titleProperty: 'fields.title',
+  //   bodyProperty: 'fields.plot',
+  //   snippetProperty: 'fields.plot',
+  //   imageProperty: 'fields.image_url'
+  // },
+  // solr: {
+  //   baseUrl: 'http://localhost:8983',
+  //   core: 'movies',
+  //   titleProperty: 'fields.title',
+  //   bodyProperty: 'fields.plot',
+  //   snippetProperty: 'fields.plot',
+  //   imageProperty: 'fields.image_url'
+  // },
+  baremo: {
+    baseUrl: 'http://localhost:9200',
+    _index: 'jurisprudencia',
     _source: '_source',
-    titleProperty: 'fields.title',
-    bodyProperty: 'fields.plot',
-    snippetProperty: 'fields.plot',
-    imageProperty: 'fields.image_url'
-  },
-  solr: {
-    baseUrl: 'http://localhost:8983',
-    core: 'movies',
-    titleProperty: 'fields.title',
-    bodyProperty: 'fields.plot',
-    snippetProperty: 'fields.plot',
-    imageProperty: 'fields.image_url'
-  },
+    titleProperty: 'caratulado',
+    bodyProperty: 'attachment.content',
+    snippetProperty: 'hechosFundantes',
+    imageProperty: 'data',
+    linkProperty: 'corte'
+  }
 });
 
 app.get('/:engine', (request, response) => {
   let engine = request.params.engine;
   let { query, numberOfResults } = request.query;
 
-  // let metrics = [];
-  let metrics = ['keywords-position', 'language', 'length', 'links', 'multimedia', 'perspicuity', 'ranking'];
+  let metrics = [];
+  // let metrics = ['keywords-position', 'language', 'length', 'links', 'multimedia', 'perspicuity', 'ranking'];
   stare(engine, query, numberOfResults, metrics)
     .then(result => response.status(200).json(result))
     .catch(err => response.status(500).json(err));
