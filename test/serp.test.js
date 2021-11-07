@@ -126,3 +126,22 @@ describe('SERP baremo', () => {
     return expect(require('../lib/serp/baremo')).rejects.toThrow();
   });
 });
+
+
+describe('SERP sence',()=>{
+  const sence = require('../lib/serp/sence');
+  jest.setTimeout(40000);
+
+  test(`Succesfully get 'sence' results for query=jest and numberOfResults=1`,()=>{
+    return sence('jest',1).then(data=>toBeStareDocument);
+  })
+
+  test(`Failed to get 'sence' results for query=null and numberOfResults=1`,()=>{
+    return expect(sence(null, 1)).rejects.toThrow();
+  })
+
+  test(`No stareOptions.sence set`, () => {
+    global.stareOptions.sence = null;
+    return expect(sence).rejects.toThrow();
+  });
+})

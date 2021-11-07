@@ -84,7 +84,21 @@ module.exports = {
         titleProperty: 'title',
         snippetProperty: 'snippet',
         imageProperty: 'image'
-      }
+      },
+     
+      baremo: {
+        baseUrl: 'http://localhost:9200',
+        _index: 'jurisprudencia',
+        _source: '_source',
+        titleProperty: 'caratulado',
+        bodyProperty: 'attachment.content',
+        snippetProperty: 'hechosFundantes',
+        imageProperty: 'data',
+        linkProperty: 'corte'
+      },
+      sence: {
+        headless: true
+      } 
     }
   },
 

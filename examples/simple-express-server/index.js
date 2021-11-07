@@ -19,7 +19,7 @@ const mySERPs = {
 };
 
 const stare = require('../..')({
-  engines: ['baremo'],
+  engines: ['baremo','sence'],
   // engines: ['elasticsearch', 'solr'],
   // engines: ['bing', 'ecosia', 'google', 'searchcloud', 'personalSERP'],
   // personalMetrics: myMetrics,
@@ -57,6 +57,9 @@ const stare = require('../..')({
     snippetProperty: 'hechosFundantes',
     imageProperty: 'data',
     linkProperty: 'corte'
+  },
+  sence: {
+    headless: true
   }
 });
 
