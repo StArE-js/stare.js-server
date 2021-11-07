@@ -3,10 +3,11 @@
 const debug = require('debug')('stare.js:server/test/serp.test.js');
 const _ = require('lodash');
 
-const ecosia = require('../lib/serp/ecosia');
-const elasticsearch = require('../lib/serp/elasticsearch');
-const google = require('../lib/serp/google');
-const solr = require('../lib/serp/solr');
+// const ecosia = require('../lib/serp/ecosia');
+// const elasticsearch = require('../lib/serp/elasticsearch');
+// const google = require('../lib/serp/google');
+// const solr = require('../lib/serp/solr');
+const baremo = require('../lib/serp/baremo');
 
 function toBeStareDocument(data) {
   expect(data).toHaveProperty('totalResults', expect.any(String));
@@ -23,97 +24,97 @@ function toBeStareDocument(data) {
   }
 }
 
-describe('SERP bing', () => {
-  const bing = require('../lib/serp/bing');
+// describe('SERP bing', () => {
+//   const bing = require('../lib/serp/bing');
   
-  test(`Succesfully get 'bing' results for query=jest and numberOfResults=1`, () => {
-    return bing('jest', 1).then(data => toBeStareDocument);
-  });
+//   test(`Succesfully get 'bing' results for query=jest and numberOfResults=1`, () => {
+//     return bing('jest', 1).then(data => toBeStareDocument);
+//   });
 
-  test(`Failed to get 'bing' results for query=null and numberOfResults=1`, () => {
-    return expect(bing(null, 1)).rejects.toThrow();
-  });
+//   test(`Failed to get 'bing' results for query=null and numberOfResults=1`, () => {
+//     return expect(bing(null, 1)).rejects.toThrow();
+//   });
 
-  // test(`No bing.serviceKey set`, () => {
-  //   global.stareOptions.bing.serviceKey = null;
-  //   return expect(bing('jest', 1)).rejects.toThrow();
-  // });
-});
+//   // test(`No bing.serviceKey set`, () => {
+//   //   global.stareOptions.bing.serviceKey = null;
+//   //   return expect(bing('jest', 1)).rejects.toThrow();
+//   // });
+// });
 
-describe('SERP ecosia', () => {
-  test(`Succesfully get 'ecosia' results for query=jest and numberOfResults=1`, () => {
-    return ecosia('jest', 1).then(data => toBeStareDocument);
-  });
+// describe('SERP ecosia', () => {
+//   test(`Succesfully get 'ecosia' results for query=jest and numberOfResults=1`, () => {
+//     return ecosia('jest', 1).then(data => toBeStareDocument);
+//   });
 
-  test(`Failed to get 'ecosia' results for query=null and numberOfResults=1`, () => {
-    return expect(ecosia(null, 1)).rejects.toThrow();
-  });
-});
+//   test(`Failed to get 'ecosia' results for query=null and numberOfResults=1`, () => {
+//     return expect(ecosia(null, 1)).rejects.toThrow();
+//   });
+// });
 
-describe('SERP elasticsearch', () => {
-  test(`Failed to get 'elasticsearch' results for query=null and numberOfResults=1`, () => {
-    return expect(elasticsearch(null, 1)).rejects.toThrow();
+// describe('SERP elasticsearch', () => {
+//   test(`Failed to get 'elasticsearch' results for query=null and numberOfResults=1`, () => {
+//     return expect(elasticsearch(null, 1)).rejects.toThrow();
 
-  });
+//   });
 
-  test(`No stareOptions.elasticsearch set`, () => {
-    global.stareOptions.elasticsearch = null;
-    return expect(require('../lib/serp/elasticsearch')).rejects.toThrow();
-  });
-});
+//   test(`No stareOptions.elasticsearch set`, () => {
+//     global.stareOptions.elasticsearch = null;
+//     return expect(require('../lib/serp/elasticsearch')).rejects.toThrow();
+//   });
+// });
 
-describe('SERP google', () => {
-  test(`Succesfully get 'google' results for query=jest and numberOfResults=1`, () => {
-    return google('jest', 1).then(data => toBeStareDocument);
-  });
+// describe('SERP google', () => {
+//   test(`Succesfully get 'google' results for query=jest and numberOfResults=1`, () => {
+//     return google('jest', 1).then(data => toBeStareDocument);
+//   });
 
-  test(`Failed to get 'google' results for query=null and numberOfResults=1`, () => {
-    return expect(google(null, 1)).rejects.toThrow();
-  });
+//   test(`Failed to get 'google' results for query=null and numberOfResults=1`, () => {
+//     return expect(google(null, 1)).rejects.toThrow();
+//   });
 
-  test(`No google.apiKey set`, () => {
-    global.stareOptions.google.apiKey = null;
-    return expect(google('jest', 1)).rejects.toThrow();
-  });
+//   test(`No google.apiKey set`, () => {
+//     global.stareOptions.google.apiKey = null;
+//     return expect(google('jest', 1)).rejects.toThrow();
+//   });
 
-  test(`No google.apiCx set`, () => {
-    global.stareOptions.google.apiCx = null;
-    return expect(google('jest', 1)).rejects.toThrow();
-  });
-});
+//   test(`No google.apiCx set`, () => {
+//     global.stareOptions.google.apiCx = null;
+//     return expect(google('jest', 1)).rejects.toThrow();
+//   });
+// });
 
-describe('SERP solr', () => {
-  test(`Failed to get 'solr' results for query=null and numberOfResults=1`, () => {
-    return expect(solr(null, 1)).rejects.toThrow();
-  });
+// describe('SERP solr', () => {
+//   test(`Failed to get 'solr' results for query=null and numberOfResults=1`, () => {
+//     return expect(solr(null, 1)).rejects.toThrow();
+//   });
 
 
-  test(`No stareOptions.solr set`, () => {
-    global.stareOptions.solr = null;
-    return expect(require('../lib/serp/solr')).rejects.toThrow();
-  });
-});
+//   test(`No stareOptions.solr set`, () => {
+//     global.stareOptions.solr = null;
+//     return expect(require('../lib/serp/solr')).rejects.toThrow();
+//   });
+// });
 
-describe('SERP AWS Search cloud', () => {
-  const defaultOptions = _.assign({}, global.stareOptions.searchcloud);
-  global.stareOptions.searchcloud = null;
+// describe('SERP AWS Search cloud', () => {
+//   const defaultOptions = _.assign({}, global.stareOptions.searchcloud);
+//   global.stareOptions.searchcloud = null;
 
-  test(`Failed to import 'searchcloud' stareOptions not set`, () => {
-    return expect(require('../lib/serp/searchcloud')).rejects.toThrow();
-  });
+//   test(`Failed to import 'searchcloud' stareOptions not set`, () => {
+//     return expect(require('../lib/serp/searchcloud')).rejects.toThrow();
+//   });
 
-  global.stareOptions.searchcloud = defaultOptions;
-  const searchcloud = require('../lib/serp/searchcloud');
+//   global.stareOptions.searchcloud = defaultOptions;
+//   const searchcloud = require('../lib/serp/searchcloud');
 
-  test(`Succesfully get 'searchcloud' results for query=wolverine and numberOfResults=1`, () => {
-    return searchcloud('wolverine', 1).then(data => toBeStareDocument);
-  });
+//   test(`Succesfully get 'searchcloud' results for query=wolverine and numberOfResults=1`, () => {
+//     return searchcloud('wolverine', 1).then(data => toBeStareDocument);
+//   });
 
-  test(`Failed to get 'searchcloud' results for query=null and numberOfResults=1`, () => {
-    return expect(searchcloud(null, 1)).rejects.toThrow();
-  });
+//   test(`Failed to get 'searchcloud' results for query=null and numberOfResults=1`, () => {
+//     return expect(searchcloud(null, 1)).rejects.toThrow();
+//   });
 
-});
+// });
 
 describe('SERP baremo', () => {
   test(`Failed to get 'baremo' results for query=null and numberOfResults=1`, () => {
