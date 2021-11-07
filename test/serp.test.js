@@ -132,8 +132,8 @@ describe('SERP sence',()=>{
   const sence = require('../lib/serp/sence');
   jest.setTimeout(40000);
 
-  test(`Succesfully get 'sence' results for query=jest and numberOfResults=1`,()=>{
-    return sence('jest',1).then(data=>toBeStareDocument);
+  test(`Succesfully get 'sence' results for query=electricidad and numberOfResults=1`,()=>{
+    return sence('electricidad',1).then(data=>toBeStareDocument);
   })
 
   test(`Failed to get 'sence' results for query=null and numberOfResults=1`,()=>{
