@@ -11,6 +11,8 @@ module.exports = {
   // Respect "browser" field in package.json when resolving modules
   // browser: false,
 
+  preset: "jest-puppeteer",
+
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/private/var/folders/08/q1ddkchj1qn__59lrs2sf0ch0000gn/T/jest_dx",
 
