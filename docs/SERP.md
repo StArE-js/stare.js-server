@@ -132,6 +132,65 @@ const stare = require('stare.js')({
 });
 ```
 
+<a name="baremo"></a>
+### Baremo Jurisprudencial
+
+For Baremo is the same case as ElasticSearch/Solr, you must provide all the info on the options when importing StArE.js
+
+You will need to have all the baremo documents indexed inside Elasticsearch in order to work with this plugin.
+
+
+```js
+const stare = require('stare.js')({
+   elasticsearch: {
+    baseUrl: 'http://localhost:9200',
+    _index: '_myIndex',
+    _source: '_source',
+    titleProperty: 'filename',
+    bodyProperty: 'body',
+    snippetProperty: 'snippet',
+    imageProperty: 'myImage'
+  }
+});
+
+/**
+ * NOTE: In order to work with it and all the Baremo related metrics, please do not change this object. Only change the baseUrl, _index if necesary.
+*/
+
+/* example */
+const stare = require('stare.js')({
+   baremo: {
+    baseUrl: 'http://localhost:9200',
+    _index: 'jurisprudencia',
+    _source: '_source',
+    titleProperty: 'caratulado',
+    bodyProperty: 'attachment.content',
+    snippetProperty: 'hechosFundantes',
+    imageProperty: 'data',
+    linkProperty: 'corte'
+  },
+});
+```
+<a name="sence"></a>
+### Catálogo Nacional de Planes Formativos (SENCE)
+
+You don't need to set the parameters first. Use de defaults, unless you want to see the search process via Non-headless browser.
+
+```js
+const stare = require('stare.js')({
+   sence: {
+    headless: true | false
+  }
+});
+
+/* example */
+const stare = require('stare.js')({
+   sence: {
+    headless: true
+  }
+});
+```
+
 <a name="create-your-own-extensions"></a>
 ## Create your own extensions
 

@@ -59,6 +59,8 @@ StArE.js is currently extended with the following plugins:
 | ElasticSearch | <code>elasticsearch</code> | Handler for SERPs obtained from ElasticSearch (only basic support) via request-promise | [See docs](/docs/SERP.md#elasticsearch) |
 | Solr | <code>solr</code> | Handler for SERPs obtained from Solr (only basic support) via request-promise | [See docs](/docs/SERP.md#solr) |
 | AWS Search Cloud | <code>searchcloud</code> | Handler for SERPs obtained from AWS Search Cloud (only basic support) via request-promise | [See docs](/docs/SERP.md#searchcloud) |
+| Baremo | <code>baremo</code> | Handler for SERPs obtained from Baremo Jurisprudencial through ElasticSearch (only basic support) via request-promise. Ver Baremo [Oficial](https://baremorm.pjud.cl/),  [Demo](https://servicios.pjud.cl/baremo_juris/index.php)| [See docs](/docs/SERP.md#baremo) |
+| Catálogo Nacional de Planes Formativos (SENCE) | <code>sence</code> | Handler for SERPs obtained from Catálogo Nacional de Planes Formativos  through Pupeteer web scrapper. Ver Catálogo Nacional de Planes Formativos [Oficial](https://sistemas.sence.cl/sipfor/Planes/Catalogo.aspx)| [See docs](/docs/SERP.md#sence) |
 
 | Metrics | Metric name | Description | Documentation |
 | ------ | ------ | ------ | ------ |
@@ -68,7 +70,16 @@ StArE.js is currently extended with the following plugins:
 | Ranking | <code>ranking</code> | Calculate the length in characters of a Document | [See docs](/docs/METRICS.md#ranking) |
 | Keywords Position | <code>keywords-position</code> | Gets the position of the query terms (keywords) inside the text body of the document | [See docs](/docs/METRICS.md#keywords-position) |
 | Links | <code>links</code> | Gets the relation between the documents based on the url that the text body contains. Only for HTML documents. | [See docs](/docs/METRICS.md#links) |
-| Multimedia | <code>multimedia</code> | Gets the amount of multimedia data on the document (audio, video, images) that the text body contains. Only for HTML documents. | [See docs](/docs/METRICS.md#multimedia) |
+| Multimedia | <code>multimedia</code> | Gets the amount of multimedia data on the document (audio, video, images) that the text body contains. Only for HTML documents. | [See docs](/docs/METRICS.md#multimedia) 
+| Category | <code>category</code> | Gets the category associated within a sentence (Accidente del trabajo o Enfermedad profesional). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#category) |
+| Courts | <code>courts</code> | Gets the three possible courts where the sentece about work-related accident or sickness was passed and the data associated like date and identification number (Tribunal de primera instancia, Corte de apelaciones, Corte suprema). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#courts) |
+| Injuries | <code>Injuries</code> | Gets the injuries that a victim suffered due the work-related accident or sickness. Based on WHO ICD-10  classification (English) or OMS CIE-10 classification (Spanish). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#injuries) |
+| Lawsuit Amount | <code>lawsuit-ammount</code> | Gets the amounts related to the lawsuit according to the sentence of work-related accident or sickness. Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#lawsuit-amount) |
+| Victim personal data | <code>personal-victim-data</code> | Gets the personal data from the victim of the work-related accident or sickness. Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#persona-victim-data) |
+| Modules | <code>modules</code> | Gets the modules associated (ID and name) to a training plan. Only for Catálogo Nacional de Planes Formativos (SENCE). | [See docs](/docs/METRICS.md#modules) |
+| Sector | <code>sector</code> | Gets the sector category associated to a training plan. Only for Catálogo Nacional de Planes Formativos (SENCE). | [See docs](/docs/METRICS.md#sector) |
+| Subsector | <code>subsector</code> | Gets the subsector category associated to a training plan. Only for Catálogo Nacional de Planes Formativos (SENCE). | [See docs](/docs/METRICS.md#subsector) |
+
 
 As is explained in the docs you can create your own extensions for [SERP](/docs/SERP.md#create-your-own-extensions) and [metrics](/docs/METRICS.md#create-your-own-extensions) support.
 
@@ -93,6 +104,7 @@ DEBUG=stare.js
 - [Daniel Gacitúa](https://github.com/dgacitua/)
 - [Franz Farbinger](https://github.com/DarkAnimat/)
 - [Diego Salazar S.](https://github.com/d-salazar-se/)
+- [Nicolás Olivares G.](https://github.com/nicoolivaresg)
 
 ## License
 [MIT](LICENSE)

@@ -14,7 +14,7 @@ Makes a request to the specified search engine which returns a <code>Promise</co
 
 | Param | Type | Description |
 | --- | --- | --- |
-| engine | <code>String</code> | SERP to use [<code>google</code>\|<code>bing</code>\|<code>ecosia</code>\|<code>elasticsearch</code>\|<code>solr</code>\|<code>searchcloud</code>] |
+| engine | <code>String</code> | SERP to use [<code>google</code>\|<code>bing</code>\|<code>ecosia</code>\|<code>elasticsearch</code>\|<code>solr</code>\|<code>searchcloud</code>\|<code>baremo</code>\|<code>sence</code>] |
 | query | <code>String</code> | Search query |
 | numberOfResults | <code>Number</code> | Maximun number of documents to return (default: <code>10</code>) |
 | metrics | <code>Array</code> | Array with the name (as <code>String</code>) of the metrics to calculate |
@@ -136,6 +136,21 @@ let stareOptions = {
     bodyProperty: 'fields.plot',
     snippetProperty: 'fields.plot',
     imageProperty: 'fields.image_url'
+  },
+  /* Baremo config */
+  baremo: {
+    baseUrl: 'http://localhost:9200',
+    _index: 'jurisprudencia',
+    _source: '_source',
+    titleProperty: 'caratulado',
+    bodyProperty: 'attachment.content',
+    snippetProperty: 'hechosFundantes',
+    imageProperty: 'data',
+    linkProperty: 'corte'
+  },
+  /*  Catálogo Nacional de Planes Formativos (SENCE) config */
+  sence: {
+    headless: true
   }
 };
 ```
@@ -152,6 +167,8 @@ let stareOptions = {
 | elasticsearch | <code>Object</code> | Object with the ElasticSearch properties |
 | solr | <code>Object</code> | Object with the Solr properties |
 | searchcloud | <code>Object</code> | Object with the AWS Search Cloud properties |
+| baremo | <code>Object</code> | Object with the Baremo Jurisprudencial properties |
+| sence | <code>Object</code> | Object with the Catálogo Nacional de Planes Formativos (SENCE) properties |
 
 ## Metrics Extensions
 
@@ -164,6 +181,14 @@ let stareOptions = {
 | <code>keywords-position</code> | Gets the position of the query terms (keywords) inside the text body of the document | [See docs](/docs/METRICS.md#keywords-position) |
 | <code>links</code> | Gets the relation between the documents based on the url that the text body contains. Only for HTML documents. | [See docs](/docs/METRICS.md#links) |
 | <code>multimedia</code> | Gets the amount of multimedia data on the document (audio, video, images) that the text body contains. Only for HTML documents. | [See docs](/docs/METRICS.md#multimedia) |
+| <code>category</code> | Gets the category associated within a sentence (Accidente del trabajo o Enfermedad profesional). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#category) |
+| <code>courts</code> | Gets the three possible courts where the sentece about work-related accident or sickness was passed and the data associated like date and identification number (Tribunal de primera instancia, Corte de apelaciones, Corte suprema). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#courts) |
+| <code>Injuries</code> | Gets the injuries that a victim suffered due the work-related accident or sickness. Based on WHO ICD-10  classification (English) or OMS CIE-10 classification (Spanish). Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#injuries) |
+| <code>lawsuit-ammount</code> | Gets the amounts related to the lawsuit according to the sentence of work-related accident or sickness. Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#lawsuit-amount) |
+| <code>personal-victim-data</code> | Gets the personal data from the victim of the work-related accident or sickness. Only for Baremo Jurisprudencial. | [See docs](/docs/METRICS.md#persona-victim-data) |
+| <code>modules</code> | Gets the modules associated (ID and name) to a training plan. Only for Catálogo Nacional de Planes Formativos | [See docs](/docs/METRICS.md#modules) |
+| <code>sector</code> | Gets the sector category associated to a training plan. Only for Catálogo Nacional de Planes Formativos (SENCE). | [See docs](/docs/METRICS.md#sector) |
+| <code>subsector</code> | Gets the subsector category associated to a training plan. Only for Catálogo Nacional de Planes Formativos (SENCE). | [See docs](/docs/METRICS.md#subsector) |
 
 As is explained in the docs you can create your own extensions for [SERP](/docs/SERP.md#create-your-own-extensions) and [metrics](/docs/METRICS.md#create-your-own-extensions) support.
 
@@ -180,6 +205,8 @@ For details on currently supported feature extractor/metrics extensions or how t
 | ElasticSearch | <code>elasticsearch</code> | No | Yes | [See docs](/docs/SERP.md#elasticsearch) |
 | Solr | <code>solr</code> | No | Yes | [See docs](/docs/SERP.md#solr) |
 | AWS Search Cloud | <code>searchcloud</code> | No | Yes | [See docs](/docs/SERP.md#searchcloud) |
+| Baremo | <code>baremo</code> | No | Yes | [See docs](/docs/SERP.md#baremo) |
+| Catálogo Nacional de Planes Formativos (SENCE) | <code>sence</code> | No | Yes | [See docs](/docs/SERP.md#sence) |
 
 For details on currently supported SERP extensions or how to create you own, [see the docs for SERP](/docs/SERP.md).
 

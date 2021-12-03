@@ -1,6 +1,6 @@
 {
   "name": "@stare.js/stare.js-server",
-  "version": "1.0.2-rc",
+  "version": "1.0.3-rc",
   "description": "Node.js serp visualization server",
   "keywords": [
     "server",
