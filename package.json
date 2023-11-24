@@ -48,7 +48,7 @@
     "dotenv": "^8.2.0",
     "googleapis": "^59.0.0",
     "jest": "^26.4.2",
-    "ms-rest-azure": "^3.0.0"
+    "ms-rest-azure": "^3.0.2"
   },
   "directories": {
     "doc": "docs",
